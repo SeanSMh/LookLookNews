@@ -1,20 +1,16 @@
 package com.example.sean.look.first.mvp.ui.adapter;
 
-import android.content.Context;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.example.sean.look.R;
 import com.example.sean.look.first.mvp.model.entity.NewsInfo;
 import com.example.sean.look.first.mvp.ui.ItemHolder.ItemHolder;
 import com.jess.arms.base.BaseHolder;
 import com.jess.arms.base.DefaultAdapter;
+import com.jess.arms.utils.ArmsUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,9 +35,18 @@ public class RecyclerViewAdapter extends DefaultAdapter<NewsInfo> {
 
     @Override
     public ItemHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_card_main,
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item,
                 parent, false);
         ItemHolder holder = (ItemHolder) getHolder(view, viewType);
+
+        holder.content.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ArmsUtils.makeText(view.getContext(), "这是一张回家的车票");
+                //后期要改为点击进入详情界面
+
+            }
+        });
         return holder;
     }
 
@@ -53,7 +58,7 @@ public class RecyclerViewAdapter extends DefaultAdapter<NewsInfo> {
 
     @Override
     public int getLayoutId(int viewType) {
-        return R.layout.list_item_card_main;
+        return R.layout.list_item;
     }
 
 }

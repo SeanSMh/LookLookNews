@@ -16,8 +16,8 @@ import com.jess.arms.base.BaseHolder;
  */
 public class ItemHolder extends BaseHolder<NewsInfo> {
 
-    private ImageView imageId;
-    private TextView content;
+    public ImageView imageId;
+    public TextView content;
 
     public ItemHolder(View itemView) {
         super(itemView);

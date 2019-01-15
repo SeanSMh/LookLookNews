@@ -13,7 +13,6 @@ import javax.inject.Inject;
 import com.example.sean.look.first.mvp.contract.firstContract;
 
 
-
 /**
  * ================================================
  * Description:

@@ -30,6 +30,7 @@ public class Fragment3 extends Fragment {
         recyclerView = (RecyclerView) inflater.inflate(R.layout.list_fragment, container, false);
         newsInfos.add(new NewsInfo(R.drawable.douzi, "这是第二个界面"));
         newsInfos.add(new NewsInfo(R.drawable.douzi2, "这是第二个界面"));
+        newsInfos.add(new NewsInfo(R.drawable.douzi2, "这是第三个界面"));
         return recyclerView;
     }
 
