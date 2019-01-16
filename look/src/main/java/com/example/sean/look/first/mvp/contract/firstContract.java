@@ -3,7 +3,6 @@ package com.example.sean.look.first.mvp.contract;
 import com.jess.arms.mvp.IView;
 import com.jess.arms.mvp.IModel;
 
-
 /**
  * ================================================
  * Description:
@@ -24,6 +23,6 @@ public interface firstContract {
 
     //Model层定义接口,外部只需关心Model返回的数据,无需关心内部细节,即是否使用缓存
     interface Model extends IModel {
-
+        void getNews(String top, String key);
     }
 }

@@ -2,6 +2,8 @@ package com.example.sean.look.first.mvp.model;
 
 import android.app.Application;
 
+import com.example.sean.look.first.api.service.GetNews;
+import com.example.sean.look.first.mvp.model.entity.NewsInfos;
 import com.google.gson.Gson;
 import com.jess.arms.integration.IRepositoryManager;
 import com.jess.arms.mvp.BaseModel;
@@ -12,6 +14,16 @@ import javax.inject.Inject;
 
 import com.example.sean.look.first.mvp.contract.firstContract;
 
+import org.greenrobot.eventbus.EventBus;
+
+import java.util.List;
+
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.functions.Action;
+import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
+import timber.log.Timber;
 
 /**
  * ================================================
@@ -43,4 +55,40 @@ public class firstModel extends BaseModel implements firstContract.Model {
         this.mGson = null;
         this.mApplication = null;
     }
+
+    //获取新闻消息
+    @Override
+    public void getNews(String top, String key) {
+        Observable.just(mRepositoryManager.obtainRetrofitService(
+                GetNews.class).getNews(top, key))
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<Observable<NewsInfos>>() {
+                    @Override
+                    public void accept(Observable<NewsInfos> newsInfoObservable) throws Exception {
+                        newsInfoObservable.subscribe(new Consumer<NewsInfos>() {
+                            @Override
+                            public void accept(NewsInfos newsInfos) throws Exception {
+                                Timber.d("----->%s", newsInfos.getResult().getData().get(0));
+                                List<NewsInfos.ResultBean.DataBean> dataBeanList =
+                                        newsInfos.getResult().getData();
+                                //发送得到的新闻信息
+                                EventBus.getDefault().post(dataBeanList);
+
+                            }
+                        });
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+
+                    }
+                }, new Action() {
+                    @Override
+                    public void run() throws Exception {
+
+                    }
+                });
+    }
+
 }

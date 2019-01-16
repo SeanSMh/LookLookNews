@@ -3,6 +3,11 @@ package com.example.sean.look.first.di.component;
 import dagger.BindsInstance;
 import dagger.Component;
 
+import com.example.sean.look.first.mvp.ui.fragment.FragmentA;
+import com.example.sean.look.first.mvp.ui.fragment.FragmentB;
+import com.example.sean.look.first.mvp.ui.fragment.FragmentC;
+import com.example.sean.look.first.mvp.ui.fragment.FragmentD;
+import com.example.sean.look.first.mvp.ui.fragment.FragmentE;
 import com.jess.arms.di.component.AppComponent;
 
 import com.example.sean.look.first.di.module.firstModule;
@@ -31,6 +36,11 @@ public interface firstComponent {
     void inject(firstActivity activity);
 
     void inject(firstFragment fragment);
+    void inject(FragmentA fragmentA);
+    void inject(FragmentB fragmentB);
+    void inject(FragmentC fragmentC);
+    void inject(FragmentD fragmentD);
+    void inject(FragmentE fragmentE);
 
     @Component.Builder
     interface Builder {

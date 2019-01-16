@@ -12,11 +12,12 @@ import android.support.v7.widget.Toolbar;
 
 import com.example.sean.look.R;
 import com.example.sean.look.first.mvp.ui.adapter.FragmentAdapter;
-import com.example.sean.look.first.mvp.ui.fragment.Fragment1;
-import com.example.sean.look.first.mvp.ui.fragment.Fragment2;
-import com.example.sean.look.first.mvp.ui.fragment.Fragment3;
-import com.example.sean.look.first.mvp.ui.fragment.Fragment4;
-import com.example.sean.look.first.mvp.ui.fragment.Fragment5;
+
+import com.example.sean.look.first.mvp.ui.fragment.FragmentA;
+import com.example.sean.look.first.mvp.ui.fragment.FragmentB;
+import com.example.sean.look.first.mvp.ui.fragment.FragmentC;
+import com.example.sean.look.first.mvp.ui.fragment.FragmentD;
+import com.example.sean.look.first.mvp.ui.fragment.FragmentE;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
@@ -72,6 +73,9 @@ public class firstActivity extends BaseActivity<firstPresenter> implements first
 
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
+        /*String top = "top";
+        String key = "aac8eee051f88de226cbf3ecf544720f";
+        mPresenter.requestFromModel(top, key);*/
         setSupportActionBar(toolbar);
         initViewpager();
     }
@@ -91,11 +95,11 @@ public class firstActivity extends BaseActivity<firstPresenter> implements first
 
         //创建fragments,将界面添加进去
         List<Fragment> fragments = new ArrayList<>();
-        fragments.add(new Fragment1());
-        fragments.add(new Fragment2());
-        fragments.add(new Fragment3());
-        fragments.add(new Fragment4());
-        fragments.add(new Fragment5());
+        fragments.add(new FragmentA());
+        fragments.add(new FragmentB());
+        fragments.add(new FragmentC());
+        fragments.add(new FragmentD());
+        fragments.add(new FragmentE());
 
         //添加Viewpager适配器
         FragmentAdapter fragmentAdapter =

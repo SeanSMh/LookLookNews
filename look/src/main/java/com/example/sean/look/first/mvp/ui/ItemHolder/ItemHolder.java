@@ -18,19 +18,21 @@ public class ItemHolder extends BaseHolder<NewsInfo> {
 
     public ImageView imageId;
     public TextView content;
+    public TextView author_name;
 
     public ItemHolder(View itemView) {
         super(itemView);
 
         imageId = (ImageView) itemView.findViewById(R.id.image);
         content = (TextView) itemView.findViewById(R.id.content);
+        author_name = (TextView) itemView.findViewById(R.id.authorname);
     }
 
     @Override
     public void setData(NewsInfo data, int position) {
 
         content.setText(data.getContent());
-
+        author_name.setText(data.getAuthor());
         //Glide加载图片
         RequestOptions options = new RequestOptions()
                 .override(100, 100);  //指定图片大小

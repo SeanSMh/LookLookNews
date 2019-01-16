@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">look</string>
+
+    <string name="author_name">来源：</string>
 </resources>
