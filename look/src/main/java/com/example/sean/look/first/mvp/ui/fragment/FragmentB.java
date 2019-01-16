@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import com.example.sean.look.R;
 import com.example.sean.look.first.di.component.DaggerfirstComponent;
 import com.example.sean.look.first.mvp.contract.firstContract;
-import com.example.sean.look.first.mvp.event.NewsEvent;
+import com.example.sean.look.first.mvp.event.NewsEvent2;
 import com.example.sean.look.first.mvp.model.entity.NewsInfo;
 import com.example.sean.look.first.mvp.presenter.firstPresenter;
 import com.example.sean.look.first.mvp.ui.adapter.RecyclerViewAdapter;
@@ -52,7 +52,7 @@ public class FragmentB extends BaseFragment<firstPresenter> implements firstCont
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
-    public void acceptNews(NewsEvent event) {
+    public void acceptNews(NewsEvent2 event) {
         newsInfos = event.getList();
         Timber.d("acceptNews----->%s", newsInfos.get(0).getContent());
         Timber.d("acceptNews----->%s", newsInfos.size());
@@ -63,6 +63,7 @@ public class FragmentB extends BaseFragment<firstPresenter> implements firstCont
         recyclerView.setAdapter(new RecyclerViewAdapter(newsInfos));
     }
 
+    //每次切回界面都需要重新请求信息，这样会不会很麻烦？
     @Override
     public void initData(@Nullable Bundle savedInstanceState) {
         String top = "top";

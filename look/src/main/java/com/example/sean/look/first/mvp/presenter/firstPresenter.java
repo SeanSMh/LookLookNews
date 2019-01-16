@@ -3,6 +3,7 @@ package com.example.sean.look.first.mvp.presenter;
 import android.app.Application;
 
 import com.example.sean.look.first.mvp.event.NewsEvent;
+import com.example.sean.look.first.mvp.event.NewsEvent2;
 import com.example.sean.look.first.mvp.model.entity.NewsInfo;
 import com.example.sean.look.first.mvp.model.entity.NewsInfos;
 import com.jess.arms.integration.AppManager;
@@ -69,7 +70,7 @@ public class firstPresenter extends BasePresenter<firstContract.Model, firstCont
         List<NewsInfo> list1 = new ArrayList<>();
         List<NewsInfo> list2 = new ArrayList<>();
 
-        for (int i = 0; i < beans.size(); i++) {
+        for (int i = 0; i < beans.size() / 2; i++) {
             NewsInfo a = new NewsInfo(beans.get(i).getThumbnail_pic_s(), beans.get(i).getTitle(),
                     beans.get(i).getAuthor_name());
             list1.add(a);
@@ -77,14 +78,16 @@ public class firstPresenter extends BasePresenter<firstContract.Model, firstCont
 
         NewsEvent event1 = new NewsEvent(list1);
         Timber.d("----->%s", list1.size());
-        EventBus.getDefault().postSticky(event1);
-        /*for (int i = beans.size() / 2; i < beans.size(); i++) {
-            NewsInfo a = new NewsInfo(beans.get(i).getThumbnail_pic_s(), beans.get(i).getTitle());
+        EventBus.getDefault().postSticky(event1);    //发送数据给第一个Fragment
+
+        for (int i = beans.size() / 2; i < beans.size(); i++) {
+            NewsInfo a = new NewsInfo(beans.get(i).getThumbnail_pic_s(), beans.get(i).getTitle(),
+                    beans.get(i).getAuthor_name());
             list2.add(a);
         }
         Timber.d("----->%s", list2.size());
-        NewsEvent event2 = new NewsEvent(list2);
-        EventBus.getDefault().postSticky(event2);*/
+        NewsEvent2 event2 = new NewsEvent2(list2);
+        EventBus.getDefault().postSticky(event2);     //发送数据给第二个Fragment
 
     }
 
