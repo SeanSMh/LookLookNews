@@ -2,4 +2,7 @@
     <string name="app_name">look</string>
 
     <string name="author_name">来源：</string>
+    <string name="title_home">home</string>
+    <string name="title_myself">personal</string>
+    <string name="title_dashboard">dashboard</string>
 </resources>
